@@ -1,10 +1,11 @@
 {
-  "name": "map-chart-with-tooltip",
+  "name": "ca-covid-homeless",
   "version": "1.0.0",
-  "description": "Example of using react-tooltip with react-simple-maps.",
+  "description": "COVID effect on homeless",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "prettier": "^2.2.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-scripts": "3.0.1",
