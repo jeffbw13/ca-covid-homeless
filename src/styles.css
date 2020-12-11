@@ -1,0 +1,60 @@
+html {
+  font-family: system-ui, sans-serif;
+  font-size: 1.25rem;
+}
+
+body {
+  margin: 0;
+  padding: 0 1.5rem;
+}
+
+h2 {
+  text-align: center;
+}
+
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+p {
+  text-align: center;
+}
+
+.mapp {
+  height: 500;
+  width: 400;
+}
+
+.countyInfo {
+  position: fixed;
+  top: 100px;
+  left: 10px;
+}
+
+.countyInfo table {
+  font-size: .6rem;
+  height: 500px
+}
+
+.countyTableWrap {
+  height: 500px;
+  overflow: auto;
+}
+
+/* Set header to stick to the top of the container. */
+.countyTableWrap thead tr th {
+  position: sticky;
+  top: 0;
+}
+
+.countyTableWrap thead th {
+  background-color: white;
+  border-bottom: solid 1px black;
+  vertical-align: bottom;
+}
+
+.countyTableWrap table td {
+  font-size: .6rem;
+  text-align: center;
+}
