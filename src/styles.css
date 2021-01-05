@@ -10,6 +10,7 @@ body {
 
 h2 {
   text-align: center;
+  font-size: 1.2rem;
 }
 
 svg {
@@ -19,6 +20,25 @@ svg {
 
 p {
   text-align: center;
+}
+
+.button-row {
+  background-color: orange;
+  position: fixed;
+  top: 5;
+  left: 10px;
+  display: flex;
+  flex-direction: row;
+  padding: 3px;
+}
+
+.button {
+  background-color: blueviolet;
+  color: white;
+  padding: 3px;
+  margin: 2px;
+  cursor: pointer;
+  font-size: 0.7rem;
 }
 
 .mapp {
@@ -33,8 +53,8 @@ p {
 }
 
 .countyInfo table {
-  font-size: .6rem;
-  height: 500px
+  font-size: 0.6rem;
+  height: 500px;
 }
 
 .countyTableWrap {
@@ -55,6 +75,6 @@ p {
 }
 
 .countyTableWrap table td {
-  font-size: .6rem;
+  font-size: 0.6rem;
   text-align: center;
 }

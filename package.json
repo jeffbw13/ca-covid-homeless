@@ -1,10 +1,11 @@
 {
-  "name": "ca-covid-homeless",
+  "name": "ca-covid",
   "version": "1.0.0",
-  "description": "COVID effect on homeless",
+  "description": "COVID-19 stats by county",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "html-react-parser": "^1.1.1",
     "prettier": "^2.2.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",

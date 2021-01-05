@@ -1,27 +1,24 @@
+//  to do: make it so county stays when selecting a different category
 import React, { useState, memo } from "react";
-import {
-  ZoomableGroup,
-  ComposableMap,
-  Geographies,
-  Geography,
-} from "react-simple-maps";
+import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import CountyInfo from "./CountyInfo";
+import charts from "./charts";
 
 const geoUrl =
   "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/us-states/CA-06-california-counties.json";
 
 const MapChart = ({ setTooltipContent }) => {
+  const [chart, setChart] = useState(charts["cases"]);
   const [countyInfo, setCountyInfo] = useState(null);
 
   const handleClickCounty = (county) => {
-    const url = `https://data.ca.gov/api/3/action/datastore_search_sql?sql=SELECT * from "235466b6-0eb9-4ff7-a4b4-8138f474ce83" WHERE "county" LIKE '${county}%'`;
-
-    console.log(county);
+    const url = `${chart.url} WHERE "county" LIKE '${county}%'`;
+    console.log("url: ", url);
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
+        //  this sorts correctly in firefox, not in chrome or safari
         const sortedData = data.result.records.sort((a, b) => {
-          //console.log(a.date, b.date);
           if (b.date > a.date) return 1;
           if (a.date > b.date) return 1;
           return 0;
@@ -37,8 +34,46 @@ const MapChart = ({ setTooltipContent }) => {
   return (
     <>
       {console.log(countyInfo)}
-      <h2>COVID-19 Homeless Impact</h2>
-      <p>Click county for stats</p>
+      <div class="button-row">
+        <div
+          class="button"
+          onClick={() => {
+            setCountyInfo(null);
+            setChart(charts["cases"]);
+          }}
+        >
+          Cases
+        </div>
+        <div
+          class="button"
+          onClick={() => {
+            setCountyInfo(null);
+            setChart(charts["hospitalizations"]);
+          }}
+        >
+          Hospitalizations
+        </div>
+        <div
+          class="button"
+          onClick={() => {
+            setCountyInfo(null);
+            setChart(charts["homeless"]);
+          }}
+        >
+          Homeless
+        </div>
+        <div
+          class="button"
+          onClick={() => {
+            setCountyInfo(null);
+            setChart(charts["surgeFac"]);
+          }}
+        >
+          Medical Surge Facilities
+        </div>
+      </div>
+      <h2>COVID-19 {chart.title}</h2>
+      <p style={{ fontSize: ".7rem" }}>Click county for stats</p>
       <div className="map">
         <ComposableMap
           data-tip=""
@@ -54,7 +89,6 @@ const MapChart = ({ setTooltipContent }) => {
             height: "50%",
           }}
         >
-          {/*  <!-- ZoomableGroup -->  */}
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map((geo) => (
@@ -90,13 +124,16 @@ const MapChart = ({ setTooltipContent }) => {
               ))
             }
           </Geographies>
-          {/*<!-- /ZoomableGroup --> */}
         </ComposableMap>
       </div>
 
-      <CountyInfo countyInfo={countyInfo} />
+      <CountyInfo chart={chart} countyInfo={countyInfo} />
     </>
   );
 };
 
 export default memo(MapChart);
+
+/*
+
+*/
