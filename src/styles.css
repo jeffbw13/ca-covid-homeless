@@ -22,8 +22,18 @@ p {
   text-align: center;
 }
 
+.tester {
+  color: #5a5353;
+  color: #a07178;
+  color: #e6ccbe;
+  color: #776274;
+  color: #c8cc92;
+
+  color: #f53;
+}
+
 .button-row {
-  background-color: orange;
+  background-color: #a07178;
   position: fixed;
   top: 5;
   left: 10px;
@@ -33,12 +43,16 @@ p {
 }
 
 .button {
-  background-color: blueviolet;
+  background-color: #5a5353;
   color: white;
   padding: 3px;
   margin: 2px;
   cursor: pointer;
   font-size: 0.7rem;
+}
+
+.button:hover {
+  background-color: #776274;
 }
 
 .mapp {
